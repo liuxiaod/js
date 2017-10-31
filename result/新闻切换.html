@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{list-style: none;}
+        #tab:after{content: "";display: block;clear:both;}
+        #nav:after{content: "";display: block;clear:both;}
+        #tab{width:1000px;border:1px solid #000;margin:0 auto;padding:20px;}
+        #nav  li {width:170px;height:80px;background:blueviolet;display: inline-block;padding-left:5px;text-align: center;font-size:39px;line-height: 80px;}
+        .box li {width:275px;height:160px;background:deepskyblue;float: right;margin-bottom: 10px;font-size:40px;line-height: 160px;text-align: center;}
+        img{float: left;margin-bottom: 10px;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var div = document.getElementsByTagName("div");
+            var nav = document.getElementById("nav");
+            var oLi = nav.getElementsByTagName("li");
+            var img = document.getElementsByTagName("img");
+            var imgs1 = ["img/1.jpg","img/2.jpg","img/3.jpg"];
+            var imgs2 = ["img/4.jpg","img/5.jpg","img/6.jpg"];
+            var box = document.getElementsByTagName("box");
+            var ul = document.getElementsByTagName("ul")
+            var li1 = ul[1].getElementsByTagName("li")
+            var index = 1;
+            var timer = null;
+            oLi[0].onclick = function () {
+                div[1].style.display = "block";
+                div[2].style.display = "none";
+                oLi[0].style.background = "#51EC21";
+                oLi[1].style.background = "#8A2BE2"
+                clearInterval(timer)
+               timer = setInterval(function () {
+
+                    img[0].src = imgs1[index];
+                    index++
+                    if(index == 3){
+                        index = 0
+
+                    };
+                },1000)
+
+            }
+            oLi[1].onclick = function () {
+                oLi[0].style.background = "#8A2BE2";
+                div[1].style.display = "none";
+                div[2].style.display = "block";
+                oLi[1].style.background = "#51EC21";
+                clearInterval(timer)
+              timer =  setInterval(function () {
+
+                    img[1].src = imgs2[index];
+                    index++
+                    if(index == 3){
+                        index = 0
+                    };
+                },1000)
+
+            }
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+
+<div id="tab">
+    <ul id="nav">
+        <li class="active">菜单一</li>
+        <li>菜单二</li>
+    </ul>
+    <div class="box" style="display: block">
+        <img src="img/1.jpg" alt="">
+        <ul>
+            <li class="active">图片1</li>
+            <li>图片2</li>
+            <li>图片3</li>
+        </ul>
+    </div>
+    <div class="box" style="display: none;">
+        <img src="img/4.jpg" alt="" style="width:700px;height:525px;">
+        <ul>
+            <li class="active">图片4</li>
+            <li>图片5</li>
+            <li>图片6</li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>
